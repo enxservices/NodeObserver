@@ -23,10 +23,6 @@ public enum Env {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public String get() {
         String value = dotenv.get(name);
         if (value == null || value.isEmpty())
