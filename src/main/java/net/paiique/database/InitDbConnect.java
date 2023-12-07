@@ -6,12 +6,12 @@ import static net.paiique.util.Env.*;
 public class InitDbConnect {
     private final Connection con;
     public InitDbConnect() {
-        String jdbc = "jdbc:mysql://" + DB_HOST.get() + ":" + DB_PORT.get() + "/" + DB_NAME.get();
-        System.out.println("🛜 | Connecting to database " + DB_NAME.get() + " on " + DB_HOST.get() + ":" + DB_PORT.get());
+        String jdbc = "jdbc:mysql://" + DB_HOST.getString() + ":" + DB_PORT.getString() + "/" + DB_NAME.getString();
+        System.out.println("🛜 | Connecting to database " + DB_NAME.getString() + " on " + DB_HOST.getString() + ":" + DB_PORT.getString());
         try {
-            con = DriverManager.getConnection(jdbc, DB_USER.get(), DB_PASS.get());
+            con = DriverManager.getConnection(jdbc, DB_USER.getString(), DB_PASS.getString());
         } catch (SQLException e) {
-            System.out.println("❌ | Failed to connect to database " + DB_NAME.get() + " on " + DB_HOST.get() + ":" + DB_PORT.get());
+            System.out.println("❌ | Failed to connect to database " + DB_NAME.getString() + " on " + DB_HOST.getString() + ":" + DB_PORT.getString());
             throw new RuntimeException(e);
         }
         System.out.println("✔️ | Connected to database successfully!");
