@@ -14,20 +14,29 @@ public enum Env {
     PTERO_TOKEN("PTERO_TOKEN"),
     SLACK_PROD_WEBHOOK("SLACK_PROD_WEBHOOK"),
     SLACK_DEV_WEBHOOK("SLACK_DEV_WEBHOOK"),
-    ;
+    TIMEOUT("TIMEOUT");
 
     private static final Dotenv dotenv = Dotenv.load();
 
     private final String name;
+
     Env(String name) {
         this.name = name;
     }
 
-    public String get() {
+    public String getString() {
         String value = dotenv.get(name);
         if (value == null || value.isEmpty())
             throw new RuntimeException("Env " + name + " is empty");
         return value;
     }
+
+    public int getInt() {
+        String value = dotenv.get(name);
+        if (value == null || value.isEmpty())
+            throw new RuntimeException("Env " + name + " is empty");
+        return Integer.parseInt(value);
+    }
+
 }
 
