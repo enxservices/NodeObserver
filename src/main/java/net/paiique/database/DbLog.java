@@ -22,7 +22,7 @@ public class DbLog {
             SlackWebhook.send("O node \"" + nodeFqdn + "\" está offline. CodMotivo: \"" + reason + "\"");
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("❌ | Failed to log node \"" + nodeFqdn + "\"");
         }
 
     }
@@ -36,7 +36,7 @@ public class DbLog {
             prepStmt.execute();
             SlackWebhook.send("O node \"" + nodeFqdn + "\" está online novamente!");
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("❌ | Failed to set node \"" + nodeFqdn + "\" as resolved.");
         }
     }
 
@@ -49,7 +49,7 @@ public class DbLog {
             while (rs.next()) if (nodeFqdn.equals(rs.getString(1))) return true;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("❌ | Failed to check node \"" + nodeFqdn + "\"");
         }
         return false;
     }

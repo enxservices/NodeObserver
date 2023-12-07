@@ -20,8 +20,7 @@ public class DbList {
                 SlackWebhook.send("O novo node \"" + nodeFqdn + "\" foi adicionado a database!");
             }
         } catch (SQLException e) {
-            SlackWebhook.send("Ocorreu um erro ao adicionar o node \"" + nodeFqdn + "\" a database!");
-            e.printStackTrace();
+            System.out.println("❌ | Failed to add node \"" + nodeFqdn + "\" to database!");
         }
     }
 
@@ -35,8 +34,7 @@ public class DbList {
             }
 
         } catch (SQLException e) {
-            SlackWebhook.send("Ocorreu um erro ao verificar o node \"" + nodeFqdn + "\" na database!");
-            e.printStackTrace();
+            System.out.println("❌ | Failed to check node \"" + nodeFqdn + "\"");
         }
         return false;
     }
@@ -52,8 +50,7 @@ public class DbList {
                 SlackWebhook.send("O certificado do node \"" + nodeFqdn + "\" foi renovado.");
             }
         } catch (SQLException e) {
-            SlackWebhook.send("Ocorreu um erro ao atualizar o certificado do node \"" + nodeFqdn + "\" na database!");
-            e.printStackTrace();
+            System.out.println("❌ | Failed to update certificate for node \"" + nodeFqdn + "\"");
         }
     }
 
@@ -66,8 +63,7 @@ public class DbList {
             while (rs.next()) if (certExpiration.getTime() < rs.getDate(1).getTime()) return true;
 
         } catch (SQLException e) {
-            SlackWebhook.send("Ocorreu um erro ao verificar a renovação do certificado do node \"" + nodeFqdn + "\" na database!");
-            e.printStackTrace();
+            System.out.println("❌ | Failed to check certificate for node \"" + nodeFqdn + "\"");
         }
         return false;
     }

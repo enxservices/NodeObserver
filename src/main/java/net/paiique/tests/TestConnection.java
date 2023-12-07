@@ -2,7 +2,6 @@ package net.paiique.tests;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
-import java.net.SocketException;
 import java.net.URL;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;

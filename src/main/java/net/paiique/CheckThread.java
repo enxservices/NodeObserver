@@ -24,6 +24,7 @@ public class CheckThread extends Thread {
             ArrayList<JSONObject> pteroResp = PterodactylAPI.nodeStatus();
 
             int FqdnMaxLen = 0;
+            if (pteroResp == null) return;
             for (JSONObject node : pteroResp) {
                 if (node.getString("fqdn").length() > FqdnMaxLen) {
                     FqdnMaxLen = node.getString("fqdn").length();

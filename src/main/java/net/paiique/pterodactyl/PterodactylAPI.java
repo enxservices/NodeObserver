@@ -20,11 +20,9 @@ public class PterodactylAPI {
         System.out.println("Getting node list from Pterodactyl.");
 
         JSONObject fromApi = getJson(panelUrl);
+        if (fromApi == null) return null;
         JSONObject apiResp = fromApi.getJSONObject("meta");
-        if (apiResp == null) return null;
         int pages = apiResp.getJSONObject("pagination").getInt("total_pages");
-
-        if (pages == 0) return null;
 
         ArrayList<JSONObject> nodes = new ArrayList<>();
 
